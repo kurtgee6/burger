@@ -2,17 +2,15 @@ var connection = require("./connection.js");
 
 // Object for all our SQL statement functions.
 var orm = {
-
-    all: function (table, cb) {
-        var queryString = "SELECT * FROM " + table + ';';
-        connection.query(queryString, function (err, data) {
+    all: function (tableInput, cb) {
+        var queryString = "SELECT * FROM " + tableInput + ';';
+        connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
             }
-            cb(data);
+            cb(result);
         });
     },
-
     create: function (table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
 
@@ -25,14 +23,13 @@ var orm = {
 
         console.log(queryString);
 
-        connection.query(queryString, vals, function (err, data) {
+        connection.query(queryString, vals, function (err, result) {
             if (err) {
                 throw err;
             }
-            cb(data);
+            cb(result);
         });
     },
-
     update: function (table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
 
@@ -48,24 +45,31 @@ var orm = {
             }
             cb(result);
         });
-
-    },
-
-    delete: function (table, condition, cb) {
-        var queryString = "DELETE FROM " + table;
-        queryString += " WHERE ";
-        queryString += condition;
-
-        connection.query(queryString, function (err, result) {
-            if (err) {
-                throw err;
-            }
-
-            cb(result);
-        });
     }
-
 };
+
+
+// Create function for SQL syntax
+function printQuestion(num) {
+    var arr = [];
+
+    for (var i = 0; i < num; i++) {
+        arr.push('?');
+    }
+    return arr.toString();
+}
+
+// Another function for SQL syntax
+function objToSql(ob) {
+    var arr = [];
+
+    for (var key in ob) {
+        if (Object.hasOwnProperty.call(ob, key)) {
+            arr.push(key + '=' + ob[key]);
+        }
+    }
+    return arr.toString();
+}
 
 
 module.exports = orm;

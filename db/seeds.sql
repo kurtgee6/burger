@@ -1,9 +1,9 @@
 USE burger_db;
 
-INSERT INTO burger (name, devour) VALUES ('Cheeseburger', true);
-INSERT INTO burger (name, devour) VALUES ('Bacon Cheeseburger', true);
-INSERT INTO burger (name, devour) VALUES ('Double Cheeseburger', true);
-INSERT INTO burger (name, devour) VALUES ('Veggie Burger', true);
-INSERT INTO burger (name, devour) VALUES ('Regular Burger', true);
-INSERT INTO burger (name, devour) VALUES ('Kobe Burger', true);
-INSERT INTO burger (name, devour) VALUES ('Onion Burger', true);
+INSERT INTO burger (name, devoured) VALUES ('Cheeseburger', false);
+INSERT INTO burger (name, devoured) VALUES ('Bacon Cheeseburger', false);
+INSERT INTO burger (name, devoured) VALUES ('Double Cheeseburger', false);
+INSERT INTO burger (name, devoured) VALUES ('Veggie Burger', false);
+INSERT INTO burger (name, devoured) VALUES ('Regular Burger', false);
+INSERT INTO burger (name, devoured) VALUES ('Kobe Burger', false);
+INSERT INTO burger (name, devoured) VALUES ('Onion Burger', false);
